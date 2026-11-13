@@ -314,6 +314,28 @@ git status
 
 1 crase de cada lado (`` ` ``) é p/ pouco código. 3 crases é p/ um bloco. A palavra dps das crases (`bash`) diz qual é a linguagem, aí o VS Code colore.
 
+### Tabela
+
+```markdown
+| Arquivo | Pra q serve |
+| --- | --- |
+| app.html | O conteúdo da página |
+| app.css | O estilo do app.html |
+```
+
+Fica assim:
+
+| Arquivo | Pra q serve |
+| --- | --- |
+| app.html | O conteúdo da página |
+| app.css | O estilo do app.html |
+
+- **1ª linha**: os títulos das colunas. Cada `|` separa uma coluna da outra.
+- **2ª linha**: `| --- | --- |` avisa q ali começa a tabela. 1 `---` p/ cada coluna.
+- **Dali p/ baixo**: cada linha é uma linha da tabela.
+
+> **Regras:** td linha tem q ter o msm nº de colunas. Ñ precisa alinhar os `|`. Os quadrados ñ são escritos, o VS Code e o GitHub desenham sozinhos qdo vê formatado (`Ctrl + Shift + V`).
+
 ### Outras coisas úteis
 
 ```markdown

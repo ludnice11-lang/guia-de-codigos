@@ -17,8 +17,47 @@ Anotações, comandos e aprendizados durante meus estudos em Desenvolvimento de 
 - **JavaScript**: linguagem q dá ação p/ página (clicar num botão e algo acontecer, por ex).
 - **TypeScript**: JavaScript c/ + regras, p/ achar erros antes. É o q o Angular usa.
 - **Angular**: ferramenta p/ criar sites maiores, dividindo a página em pedaços (componentes).
+- **Live Server**: extensão do VS Code q abre o site no navegador e atualiza sozinho qdo salva.
 - **GitHub Pages**: parte do GitHub q coloca o site no ar, c/ um endereço p/ qqr pessoa abrir.
 - **GitHub Actions (o robô)**: robô do GitHub q faz tarefas sozinho. No meu portfólio, td vez q dou `git push`, ele monta o site e publica no GitHub Pages. As ordens dele ficam no arquivo `.github/workflows/deploy.yml`. (Pq precisa dele: o navegador ñ entende Angular. Qdo o projeto é Angular e vai p/ o ar, ele tem q ser traduzido antes p/ HTML, CSS e JavaScript normais, c/ o `ng build`. O robô faz essa tradução e publica sozinho. Site só c/ HTML e CSS ñ precisa de tradução.)
+
+### Arquivos de um projeto Angular
+
+**Dentro de `src/app`** (o componente principal):
+
+| Arquivo | Pra q serve |
+| --- | --- |
+| `app.html` | O conteúdo da página: títulos, textos, listas, links. É onde + escrevo. |
+| `app.css` | O estilo **só** do `app.html`. |
+| `app.ts` | O "cérebro" do componente: liga o `app.html` c/ o `app.css` e guarda as informações (tipo listas do `@for`). |
+| `app.config.ts` | Configurações do projeto td. Quase nunca mexe. |
+| `app.routes.ts` | As **rotas**: qual página aparece em cada endereço (ex: `/sobre`). Site de 1 página só deixa vazio. |
+| `app.spec.ts` | **Testes**: código q confere se o componente funciona. Por enquanto pode ignorar. |
+
+**Dentro de `src`:**
+
+| Arquivo | Pra q serve |
+| --- | --- |
+| `index.html` | A página "casca". Tem a tag `<app-root>`, onde o Angular encaixa o componente. Quase nunca mexe. |
+| `main.ts` | O botão de ligar: 1º arquivo q roda. Ñ mexe. |
+| `styles.css` | Estilo da página **toda** (ex: fonte e fundo do `body`). |
+
+> **Importante:** `styles.css` vale p/ td o site. `app.css` vale só p/ o `app.html`.
+
+**Fora do `src`** (a raiz do projeto):
+
+| Arquivo/pasta | Pra q serve |
+| --- | --- |
+| `package.json` | Lista dos pacotes do projeto e dos comandos, tipo o `npm start`. |
+| `node_modules` | Pasta c/ td os pacotes baixados. Enorme, ñ vai p/ o GitHub. Ñ mexe. |
+| `angular.json` | Configurações do Angular. |
+| `tsconfig...json` | Configurações do TypeScript. |
+| `public` | Arquivos q vão do jeito q tão p/ o site, tipo o ícone da aba (`favicon.ico`). |
+| `dist` | O site já traduzido pelo `ng build`. |
+| `.gitignore` | Lista do q o Git ignora (tipo o `node_modules`). |
+| `.vscode`, `.editorconfig`, `.prettierrc` | Configurações do VS Code e de como organizar o código. |
+
+> No dia a dia, quase sempre mexo só em 3: `app.html`, `app.css` e `styles.css`.
 
 ---
 
@@ -115,6 +154,26 @@ ng new nome-do-projeto
 Cria a pasta do projeto já c/ td do Angular dentro.
 
 > **Importante:** 1º cria o projeto c/ `ng new` no terminal, dps entra na pasta (`cd nome-do-projeto`) e abre no VS Code (`code .`). Se abrir uma pasta vazia no VS Code antes, ela ñ vira Angular sozinha.
+
+---
+
+## Ver o site no navegador
+
+### Projeto só c/ HTML e CSS: Live Server
+
+Clica c/ o botão direito no `index.html` e escolhe **Open with Live Server**, ou clica em **Go Live** lá embaixo no VS Code.
+
+> **Importante:** o Live Server ñ funciona c/ Angular, pq o navegador ñ entende Angular sem a tradução.
+
+### Projeto Angular: npm start
+
+```bash
+npm start
+```
+
+Roda o Angular e deixa o site no endereço `http://localhost:4200`. Dps aperta **o** e **Enter** q o site abre no navegador.
+
+> Funciona em qqr terminal (CMD, PowerShell ou o do VS Code), mas o terminal tem q estar dentro da pasta do projeto. P/ parar: `Ctrl + C`.
 
 ---
 

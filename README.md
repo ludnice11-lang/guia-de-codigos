@@ -18,7 +18,7 @@ Anotações, comandos e aprendizados durante meus estudos em Desenvolvimento de 
 - **TypeScript**: JavaScript c/ + regras, p/ achar erros antes. É o q o Angular usa.
 - **Angular**: ferramenta p/ criar sites maiores, dividindo a página em pedaços (componentes).
 - **GitHub Pages**: parte do GitHub q coloca o site no ar, c/ um endereço p/ qqr pessoa abrir.
-- **GitHub Actions (o robô)**: robô do GitHub q faz tarefas sozinho. No meu portfólio, td vez q dou `git push`, ele monta o site e publica no GitHub Pages. As ordens dele ficam no arquivo `.github/workflows/deploy.yml`.
+- **GitHub Actions (o robô)**: robô do GitHub q faz tarefas sozinho. No meu portfólio, td vez q dou `git push`, ele monta o site e publica no GitHub Pages. As ordens dele ficam no arquivo `.github/workflows/deploy.yml`. (Pq precisa dele: o navegador ñ entende Angular. Qdo o projeto é Angular e vai p/ o ar, ele tem q ser traduzido antes p/ HTML, CSS e JavaScript normais, c/ o `ng build`. O robô faz essa tradução e publica sozinho. Site só c/ HTML e CSS ñ precisa de tradução.)
 
 ---
 

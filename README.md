@@ -815,6 +815,76 @@ export class App {           // export = deixa outros arquivos usarem
 
 > Comentário no TypeScript/JavaScript é c/ `//` (1 linha) ou `/* */` (várias linhas).
 
+### Criar um componente novo
+
+```bash
+ng generate component component/tag-listas
+```
+
+Cria a pasta `component/tag-listas` dentro do `src/app`, c/ 4 arquivos: `.html`, `.css`, `.ts` e `.spec.ts` (o de testes). Dá p/ escrever curto: `ng g c component/tag-listas`.
+
+> O terminal tem q estar dentro da pasta do projeto. O componente novo já vem escrito "tag-listas works!" no HTML, é só p/ mostrar q funcionou.
+
+### Usar o componente na página
+
+1º no `app.ts`, importa o componente e coloca ele no `imports`:
+
+```typescript
+import { TagListas } from './component/tag-listas/tag-listas';   // traz o componente
+
+@Component({
+  imports: [RouterOutlet, TagListas],   // avisa q o app vai usar ele
+  selector: 'app-root',
+  ...
+})
+```
+
+Dps no `app.html`, coloca a tag c/ o nome do `selector` dele:
+
+```html
+<app-tag-listas></app-tag-listas>
+```
+
+> O nome muda de jeito: a pasta é `tag-listas`, a classe no `.ts` é `TagListas` (junto e c/ letra grande) e a tag é `app-tag-listas`.
+
+### Tipos de variável (TypeScript)
+
+No TypeScript a gente diz o **tipo** da variável, o q ela pode guardar. Dentro da `class` ñ usa `let`.
+
+```typescript
+export class TagListas {
+  nome: string = 'Ludnice';                        // texto, c/ aspas simples ou duplas
+  numero: number = 42;                             // nº
+  estudando: boolean = true;                       // true ou false
+  arquivos: string[] = ['app.html', 'app.css'];    // array (lista) de textos
+}
+```
+
+| Tipo | O q guarda |
+| --- | --- |
+| `string` | texto |
+| `number` | nº |
+| `boolean` | `true` (verdadeiro) ou `false` (falso) |
+| `string[]` | lista de textos (o `[]` quer dizer lista) |
+
+> Se tentar guardar um nº numa variável `string`, o VS Code já avisa o erro. É p/ isso q serve o TypeScript.
+
+### constructor e this
+
+```typescript
+export class TagListas {
+  nome: string = 'Ludnice';
+
+  constructor() {
+    console.log("minha variável: ", this.nome);
+  }
+}
+```
+
+- `constructor` = roda sozinho qdo o componente aparece na página
+- `this.` = "deste componente". P/ usar uma variável da classe tem q colocar o `this.` antes
+- No `console.log`, a `,` separa o texto da variável (mostra os 2 c/ espaço no meio)
+
 ---
 
 ## Atalhos do VS Code

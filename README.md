@@ -475,6 +475,126 @@ São "apelidos" p/ achar a tag no CSS (ou no link, no caso do `id`).
 
 > O nome da `class` ñ pode começar c/ número (tipo `class="01"`), pq o CSS ñ consegue achar. Usa `class="caixa1"`.
 
+### O head (configurações da página)
+
+O q fica no `head` ñ aparece na tela, são informações p/ o navegador, o Google e o WhatsApp.
+
+```html
+<head>
+    <meta charset="UTF-8">   <!-- deixa usar acentos e ç -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- site certinho no cel -->
+    <title>Ludnice | Criação de Sites</title>   <!-- texto da aba -->
+    <meta name="description" content="Criação de sites em Portugal e no Brasil.">   <!-- texto q aparece no Google -->
+    <link rel="icon" href="favicon.svg">        <!-- iconezinho da aba (favicon) -->
+    <link rel="stylesheet" href="style.css">    <!-- liga o CSS -->
+</head>
+```
+
+> Sem o `viewport`, no cel o site aparece minúsculo, como se fosse no computador.
+
+### Prévia ao compartilhar (WhatsApp, Facebook...)
+
+```html
+<meta property="og:title" content="Precisa de um site? Eu faço!">
+<meta property="og:description" content="Sites bonitos e modernos.">
+<meta property="og:image" content="https://ludnice.pt/previa.jpg">
+<meta property="og:url" content="https://ludnice.pt/">
+```
+
+É o "cartãozinho" c/ título, texto e imagem q aparece qdo manda o link.
+
+> A imagem tem q ter o endereço completo, c/ `https://`, senão o WhatsApp ñ acha.
+
+### Imagem
+
+```html
+<img src="imagens/servico-site.jpg" alt="Portátil a mostrar um site">
+```
+
+- `src` = onde tá a imagem
+- `alt` = descrição da imagem, p/ qm usa leitor de tela e p/ qdo ela ñ carrega. Ñ precisa fechar!
+
+### span
+
+```html
+<h1>Precisa de um site? <span class="destaque">Eu faço!</span></h1>
+```
+
+É tipo a `div`, mas p/ um pedacinho de texto, sem pular linha. Bom p/ pintar só uma parte de outra cor.
+
+### Menu (nav)
+
+```html
+<nav class="menu">
+    <a href="#sobre">Sobre</a>
+    <a href="#precos">Preços</a>
+</nav>
+```
+
+`nav` = tag semântica do menu. Cada link pula p/ seção c/ aquele `id`.
+
+### Botão
+
+```html
+<button id="botao-menu" aria-label="Abrir menu">☰</button>
+```
+
+`aria-label` = descreve o botão p/ qm usa leitor de tela, qdo ele só tem um símbolo.
+
+### Pergunta q abre e fecha (details)
+
+```html
+<details>
+    <summary>O site funciona no telemóvel?</summary>
+    <p>Sim! Funciona no cel e no computador.</p>
+</details>
+```
+
+- `summary` = o q aparece sempre (a pergunta)
+- o resto só aparece qdo clica. Ñ precisa de JavaScript!
+
+### Lista de termos (dl)
+
+```html
+<dl>
+    <dt>Domínio</dt>
+    <dd>Pode demorar até 48 horas.</dd>
+</dl>
+```
+
+- `dl` = a lista
+- `dt` = o termo (o título)
+- `dd` = a explicação dele
+
+### Formulário
+
+```html
+<form id="formulario">
+    <label for="campo-nome">O seu nome</label>
+    <input type="text" id="campo-nome" placeholder="Ex.: Maria" required>
+
+    <label for="campo-tipo">Tipo de site</label>
+    <select id="campo-tipo">
+        <option>Site institucional</option>
+        <option>Landing page</option>
+    </select>
+
+    <label for="campo-ideia">A sua ideia</label>
+    <textarea id="campo-ideia" rows="4"></textarea>
+
+    <button type="submit">Enviar</button>
+</form>
+```
+
+- `form` = o formulário td
+- `label` = o texto q explica o campo. O `for` liga ele ao campo c/ o msm `id`
+- `input` = campo de 1 linha. Ñ precisa fechar!
+- `placeholder` = texto clarinho de exemplo, some qdo a pessoa escreve
+- `required` = obrigatório, o navegador ñ deixa enviar vazio
+- `select` + `option` = caixinha de escolher
+- `textarea` = caixa grande, p/ várias linhas (`rows` = qtas linhas)
+- `type="submit"` = o botão q envia o formulário
+
 ---
 
 ## CSS

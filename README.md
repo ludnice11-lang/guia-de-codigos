@@ -727,6 +727,159 @@ O `:hover` só vale qdo o mouse tá em cima.
 - `from` = como começa
 - `to` = como termina
 
+### Cor c/ #
+
+```css
+color: #d9f07a;   /* verde-limão */
+```
+
+Outro jeito de escrever cor, c/ `#` + 6 letras/nºs. O VS Code mostra um quadradinho c/ a cor do lado.
+
+### Variáveis de cor (:root)
+
+```css
+/* guarda as cores lá em cima, c/ um nome */
+:root {
+    --cor-principal: #d9f07a;
+    --cor-fundo: #13202e;
+}
+
+/* usa a cor pelo nome c/ o var() */
+body {
+    background: var(--cor-fundo);
+}
+
+h2 {
+    color: var(--cor-principal);
+}
+```
+
+O nome tem q começar c/ `--`. Se quiser mudar a cor do site td, é só mudar no `:root`.
+
+### Ajustes gerais (o *)
+
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;   /* rola devagar qdo clica no menu */
+}
+```
+
+- `*` = td as tags da página
+- `margin: 0` e `padding: 0` = tira os espaços q o navegador coloca sozinho
+- `box-sizing: border-box` = o `padding` e a borda ficam **dentro** da largura, ñ aumentam a caixa
+
+> Costuma ir lá no começo do CSS.
+
+### Fonte baixada (@font-face)
+
+```css
+/* ensina a fonte nova p/ o navegador */
+@font-face {
+    font-family: "DM Sans";                      /* nome q vou usar */
+    src: url("fontes/dm-sans.woff2") format("woff2");   /* onde tá o arquivo */
+}
+
+/* usa a fonte */
+body {
+    font-family: "DM Sans", Arial, sans-serif;
+}
+```
+
+O arquivo da fonte fica na pasta do site. As fontes dps da `,` são reserva, se a 1ª ñ carregar.
+
+### Medidas: rem e line-height
+
+```css
+font-size: 1.3rem;   /* 1rem = tamanho normal da letra (16px). 2rem = o dobro */
+line-height: 1.6;    /* espaço entre as linhas do texto */
+```
+
+> O `rem` é melhor q `px` p/ letra, pq respeita qdo a pessoa aumenta a letra no cel.
+
+### Flex (lado a lado)
+
+```css
+.menu {
+    display: flex;              /* coloca os filhos lado a lado */
+    justify-content: center;    /* centraliza na horizontal */
+    align-items: center;        /* centraliza na vertical */
+    flex-wrap: wrap;            /* se ñ couber, passa p/ linha de baixo */
+    gap: 1rem;                  /* espaço entre eles */
+}
+```
+
+- `justify-content: space-between` = 1 na ponta esquerda e outro na direita
+
+> O `display: flex` vai na caixa **pai**, e quem fica lado a lado são as **filhas**.
+
+### Grid (colunas)
+
+```css
+.cartoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+```
+
+Cria colunas sozinho: cada uma c/ no mínimo 220px. Se a tela for pequena (cel), fica tipo 1 embaixo da outra.
+
+### Posição (position) e z-index
+
+```css
+.cabecalho {
+    position: sticky;   /* gruda no topo qdo rola a página */
+    top: 0;
+    z-index: 10;        /* fica por cima das outras coisas */
+}
+```
+
+- `sticky` = gruda qdo chega no topo
+- `fixed` = fica parado na tela, msm rolando
+- `z-index` = qual fica na frente. Nº maior = + na frente. `-1` = vai p/ trás de td
+
+### Enfeite c/ ::before
+
+```css
+/* tracinho verde em cima de cada h2 */
+.secao h2::before {
+    content: "";           /* obrigatório, msm vazio */
+    display: block;
+    width: 50px;
+    height: 5px;
+    background: var(--cor-principal);
+}
+```
+
+`::before` cria uma "camada" extra antes do conteúdo da tag, sem mexer no HTML. Tem tb o `::after`, depois.
+
+### Esconder: display none
+
+```css
+.botao-menu {
+    display: none;   /* some da página */
+}
+```
+
+### Versão do cel (@media)
+
+```css
+@media (max-width: 600px) {
+    /* td aqui dentro só vale qdo a tela tem até 600px (cel) */
+    .botao-menu {
+        display: block;   /* no cel o ☰ aparece */
+    }
+}
+```
+
+> O `@media` fica lá no final do CSS, p/ ganhar das regras de cima.
+
 > No Angular, o `styles.css` vale p/ página td e o `app.css` só p/ o `app.html`.
 
 ---

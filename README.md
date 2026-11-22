@@ -611,6 +611,188 @@ O `:hover` só vale qdo o mouse tá em cima.
 
 ---
 
+## JavaScript
+
+JavaScript é o q dá ação p/ página. O arquivo termina em `.js` e é ligado no final do `body`:
+
+```html
+<script src="script.js"></script>
+```
+
+> Fica no final do `body` p/ página carregar 1º e o script rodar dps.
+
+### Console
+
+É uma parte do navegador onde aparecem as mensagens do `console.log()` e os erros do código. P/ abrir: **F12** e clica na aba **Console**, ou `Ctrl + Shift + J` q já abre direto nele.
+
+```javascript
+console.log("Olá");   // mostra "Olá" no Console
+```
+
+### Comentário
+
+```javascript
+// comentário de 1 linha
+/* comentário de
+   várias linhas */
+```
+
+### Variáveis
+
+Variável é um espaço p/ guardar um valor.
+
+```javascript
+let nome = "Ludnice";   // texto vai c/ aspas
+let idade = 36;         // nº vai sem aspas
+let estudando = true;   // true (verdadeiro) ou false (falso)
+```
+
+- `let` = cria a variável
+- `=` = guarda o valor dentro dela
+
+### Juntar textos
+
+```javascript
+console.log("Olá, meu nome é " + nome + " e tenho " + idade + " anos.");
+```
+
+O `+` junta os textos c/ as variáveis. Atenção c/ os espaços dentro das aspas!
+
+### Comparações
+
+| Sinal | Quer dizer |
+| --- | --- |
+| `>` | maior q |
+| `<` | menor q |
+| `>=` | maior ou igual |
+| `<=` | menor ou igual |
+| `===` | igual |
+| `!==` | diferente |
+
+### if / else (decisões)
+
+```javascript
+if (idade >= 18) {
+    console.log("maior de idade");
+} else {
+    console.log("menor de idade");
+}
+```
+
+Se o q tá no `( )` for verdade, roda o 1º `{ }`. Se ñ, roda o do `else`.
+
+### else if (várias opções)
+
+```javascript
+if (idade < 12) {
+    console.log("criança");
+} else if (idade < 18) {
+    console.log("adolescente");
+} else if (idade < 60) {
+    console.log("adulta");
+} else {
+    console.log("idosa");
+}
+```
+
+Testa de cima p/ baixo e para no 1º q for verdade. O `else` é qdo nenhum deu certo.
+
+### Funções
+
+Função é um bloco de código c/ nome. Escreve 1 vez e usa qtas vezes quiser.
+
+```javascript
+// cria a função
+function saudar(pessoa) {
+    console.log("Olá, " + pessoa + "!");
+}
+
+// chama a função (manda rodar)
+saudar("Ludnice");
+saudar("Maria");
+saudar(nome);   // tb dá p/ mandar uma variável
+```
+
+- `function` = cria a função
+- `pessoa` = **parâmetro**, recebe o valor q vai no `( )` qdo chama a função
+- O q tá no `{ }` só roda qdo a função é chamada
+
+### Mudar o texto da página
+
+```html
+<p id="mensagem"></p>
+```
+
+```javascript
+document.getElementById("mensagem").textContent = "Olá, meu nome é " + nome;
+```
+
+- `document` = a página
+- `getElementById("mensagem")` = pega a tag c/ `id="mensagem"`
+- `textContent` = o texto q fica dentro dela
+
+### Botão q faz algo qdo clica
+
+```html
+<button id="botao">Clique aqui</button>
+```
+
+```javascript
+function mudarTexto() {
+    document.getElementById("mensagem").textContent = "Vc clicou no botão!";
+}
+
+document.getElementById("botao").addEventListener("click", mudarTexto);
+```
+
+`addEventListener` = fica "escutando". Qdo der `"click"` no botão, roda a função `mudarTexto`.
+
+> Na última linha a função vai **sem** `()`. C/ `()` ela roda na hr, antes do clique.
+
+### Arrays (listas)
+
+Array é uma lista de valores numa variável só.
+
+```javascript
+let frutas = ["maçã", "banana", "uva", "laranja"];
+
+console.log(frutas[0]);       // maçã
+console.log(frutas[2]);       // uva
+console.log(frutas.length);   // 4 (qtos itens tem)
+```
+
+> A contagem começa do **0**! O 1º item é o `[0]`.
+
+### Laço for...of (repetição)
+
+Repete o msm código p/ cada item do array.
+
+```javascript
+for (let fruta of frutas) {
+    console.log("Eu gosto de " + fruta);
+}
+```
+
+Lê assim: "p/ cada `fruta` da lista `frutas`, faz o q tá no `{ }`". A cada volta, `fruta` guarda um item diferente.
+
+### Mostrar a lista na página
+
+```html
+<ul id="lista-frutas"></ul>
+```
+
+```javascript
+let lista = document.getElementById("lista-frutas");   // pega a ul vazia
+
+for (let fruta of frutas) {
+    let item = document.createElement("li");   // cria um li (ainda fora da página)
+    item.textContent = fruta;                  // coloca o nome da fruta nele
+    lista.appendChild(item);                   // põe o li dentro da ul, agora aparece!
+}
+```
+
+---
+
 ## TypeScript e Angular
 
 O Angular usa **TypeScript** (arquivos `.ts`), q é o JavaScript c/ + regras. Por enquanto só vi o arquivo q liga as peças.
